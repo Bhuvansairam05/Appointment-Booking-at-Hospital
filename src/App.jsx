@@ -20,8 +20,8 @@ function App() {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
-    phone: "",
-    drname: "",
+    mobile: "",
+    drName: "",
     gender: "male",
     date: "",
     visitType: "consult",
@@ -42,8 +42,8 @@ function App() {
     let emptyData = {
       name: "",
     age: "",
-    phone: "",
-    drname: "",
+    mobile: "",
+    drName: "",
     gender: "male",
     date: "",
     visitType: "consult",
@@ -54,7 +54,7 @@ function App() {
     if (isNotEmpty) {
       let regex = /^[6-9]\d{9}$/;
       let timeregex = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
-      if (!regex.test(formData.phone)) {
+      if (!regex.test(formData.mobile)) {
         setWarning("Invalid mobile Number");
         return;
       }
@@ -62,8 +62,19 @@ function App() {
         setWarning("Invalid Time");
         return;
       }
+      let updatedData = {
+        name: formData.name,
+    age: formData.age,
+    mobile: formData.mobile,
+    drName: formData.drName,
+    gender: formData.gender,
+    date: formData.date,
+    consult: formData.visitType=="consult"?true:false,
+    time: formData.time,
+    options:false
+      }
       let changedData = [...data];
-      changedData[updateIndex] = formData;
+      changedData[updateIndex] = updatedData;
       setData(changedData);
       setFormData(emptyData);
       setUpdateIndex(0);
@@ -84,7 +95,7 @@ function App() {
     nameRef.current.value = fetchData.name;
     ageRef.current.value = fetchData.age;
     genderRef.current.value = fetchData.gender;
-    visitTypeRef.current.value = fetchData.visitType;
+    visitTypeRef.current.value = fetchData.consult?"consult":"revisit";
     timeRef.current.value = fetchData.time;
     dateRef.current.value = fetchData.date;
     mobileRef.current.value = fetchData.mobile;
@@ -101,8 +112,8 @@ function App() {
     let knownData = {
       name:nameRef.current.value,
       age: ageRef.current.value,
-    phone: mobileRef.current.value,
-    drname: drNameRef.current.value,
+    mobile: mobileRef.current.value,
+    drName: drNameRef.current.value,
     gender: genderRef.current.value,
     date: dateRef.current.value,
     visitType: visitTypeRef.current.value,
@@ -112,8 +123,8 @@ function App() {
     let emptyData = {
       name: "",
     age: "",
-    phone: "",
-    drname: "",
+    mobile: "",
+    drName: "",
     gender: "male",
     date: "",
     visitType: "consult",
@@ -121,27 +132,33 @@ function App() {
     options:false
     }
     setFormData(knownData);
-    const isNotEmpty = Object.values(formData).every(value => value !== "");
+    const isNotEmpty = Object.values(knownData).every(value => value !== "");
     if (isNotEmpty) {
       let regex = /^[6-9]\d{9}$/;
       let timeregex = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
-      if (!regex.test(formData.phone)) {
+      if (!regex.test(knownData.mobile)) {
         setWarning("Invalid mobile Number");
+        setTimeout(()=>{
+          setWarning("");
+        },3000);
         return;
       }
-      if (!timeregex.test(formData.time)) {
+      if (!timeregex.test(knownData.time)) {
         setWarning("Invalid Time");
+        setTimeout(()=>{
+          setWarning("")
+        });
         return;
       }
       let newData = {
-        name: formData.name,
-        age: formData.age, 
-        gender: formData.gender,
-        consult: formData.visitType==="consult"?true:false, 
-        time: formData.time, 
-        date: formData.date, 
-        mobile: formData.phone, 
-        drName: formData.drname,
+        name: knownData.name,
+        age: knownData.age, 
+        gender: knownData.gender,
+        consult: knownData.visitType==="consult"?true:false, 
+        time: knownData.time, 
+        date: knownData.date, 
+        mobile: knownData.mobile, 
+        drName: knownData.drName,
         options:false
       };
       setData([...data,newData]);
