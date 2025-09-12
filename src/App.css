@@ -1,0 +1,61 @@
+*{
+    padding:0px;
+    margin:0px;
+    overflow-x: hidden;
+}
+.form-container{
+    height: auto;
+    margin-top:50px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:40px;
+    border:1px solid rgb(149, 144, 144);
+}
+.heading{
+    height:80px;
+    font-size: 40px;
+    color: white;
+    width: 100%;
+    background-image: linear-gradient(to right,blue,violet);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    width:350px;
+    font-size: 20px;
+    border:1px solid black;
+    border-radius: 50px;
+    padding:10px;
+}
+select{
+    width:370px;
+    padding:10px;
+    font-size: 20px;
+    background-image: linear-gradient(rgb(198, 193, 193),white);
+    border:1px solid black;
+    border-radius: 10px;
+}
+#book-btn{
+    width: 300px;
+    font-size: 20px;
+    padding:15px;
+    background-color: blue;
+    border: 1px solid blue;
+    color: white;
+    border-radius: 40px;
+}
+.row{
+    padding-left: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap:20px;
+}
