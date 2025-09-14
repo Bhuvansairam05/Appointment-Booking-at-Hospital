@@ -238,13 +238,12 @@ function App() {
       </>
     )
   }
-
   function Form() {
     return (
       <>
         <div className="form-container">
           <form onSubmit={handleSubmit} className='form'>
-            <div className="heading">Welcome to Gradious Doctor Appointment Booking</div>
+            <div className="heading">Welcome to Gradious Doctor Appointment Booking System</div>
             <div className="row">
               <input type="text" placeholder='Patient Name *' id='name'  ref={nameRef} />
               <input type="tel" placeholder='Phone Number * (+91)' id='phone-number' ref={mobileRef} />
